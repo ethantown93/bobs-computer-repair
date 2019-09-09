@@ -1,0 +1,29 @@
+/*
+============================================
+; Author: Ethan Townsend
+; Date:   8/12/2019
+; Description: web-425
+;===========================================
+*/ 
+
+.menu {
+    margin: auto;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+}
+
+button {
+    /* font-weight: bold; */
+    font-size: 16px;
+}
