@@ -12,13 +12,11 @@ import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
 import { NavComponent } from './components/nav/nav.component';
-import { RepairServicesComponent } from './components/repair-services/repair-services.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResidentialServicesComponent } from './components/residential-services/residential-services.component';
 import { ShopServicesComponent } from './components/shop-services/shop-services.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CartComponent } from './components/cart/cart.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,13 +37,11 @@ import { RepairServicesService } from './services/repair-services.service';
   declarations: [
     AppComponent,
     NavComponent,
-    RepairServicesComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,
     ResidentialServicesComponent,
     ShopServicesComponent,
-    CartComponent
   ],
   imports: [
     BrowserModule,

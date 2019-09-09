@@ -17,7 +17,7 @@
             <hr>
             <ul>
                 <li *ngFor='let service of services'><strong>{{ service.name }}</strong> - ${{ service.price }} <button
-                        mat-raised-button (click)='moveToCart(service)' >
+                        mat-raised-button (click)='moveToCart(service)'>
                         <mat-icon>add_circle</mat-icon>
                     </button></li>
             </ul>
@@ -25,6 +25,9 @@
 
         <mat-card class='right' fxFlex='90%'>
             <h2>Invoice</h2>
+            <hr>
+            <h3>Total</h3>
+            <strong> ${{sum}} <span>+ {{ manualHours }} = {{ this.invoiceTotal }} </span> </strong>
             <hr>
             <ul>
                 <li *ngFor='let service of cart'><strong>{{ service.name }}</strong> - ${{ service.price }} <button
@@ -37,33 +40,41 @@
     </div>
 
     <div class='total'>
-        <div> 
+        <div>
             <h3>Manual Work Hours</h3>
             <p>Extra work hours are charged at $50/hour</p>
-            <input type='number' name='manualHours' placeholder='Manual labor hours' [(ngModel)]='manualHours' required pattern='[0-9]*' ngModel #hours='ngModel' minlength='1' [class.hasError]='hours.isValid && hours.touched'>              
-            <button mat-raised-button class='btn-remove' (click)='removeHours()' [disabled]='hours.invalid'><mat-icon>remove_circle</mat-icon></button><button [disabled]='hours.invalid' mat-raised-button (click)='totalHours(manualHours)'>Add Work Hours</button>
+            <input type='number' name='manualHours' placeholder='Manual labor hours' [(ngModel)]='manualHours' required
+                pattern='[0-9]*' ngModel #hours='ngModel' minlength='1'
+                [class.hasError]='hours.isValid && hours.touched'>
+            <button mat-raised-button class='btn-remove' (click)='removeHours()' [disabled]='hours.invalid'>
+                <mat-icon>remove_circle</mat-icon>
+            </button><button [disabled]='hours.invalid' mat-raised-button (click)='totalHours(manualHours)'>Add Work
+                Hours</button><br/><br/>
+            <button mat-raised-button (click)='tallyTotal()' (click)='totalPrice()'>
+                Calculate Total <mat-icon>autorenew</mat-icon>
+            </button>
         </div>
-        <br/>
-        <h3>Total</h3>
-        <strong> ${{sum}} <span>+ {{ manualHours }} = {{ this.invoiceTotal }} </span> </strong>
-        <button mat-raised-button (click)='tallyTotal()' (click)='totalPrice()'>
-            Calculate Total <mat-icon>autorenew</mat-icon>
-        </button>
+        <br />
     </div>
 
     <div class='resi-form'>
-        <form fxLayout='column' (ngSubmit)='onSubmit(resiForm)' #resiForm = 'ngForm'>
+        <form fxLayout='column' (ngSubmit)='onSubmit(resiForm)' #resiForm='ngForm'>
             <mat-form-field>
-                <input matInput type='text' name='firstName' placeholder='First Name' [(ngModel)]='messageInfo.firstName' #fname='ngModel' [class.hasError] = 'fname.isvalid && fname.touched' required minlength='2'>
+                <input matInput type='text' name='firstName' placeholder='First Name'
+                    [(ngModel)]='messageInfo.firstName' #fname='ngModel'
+                    [class.hasError]='fname.isvalid && fname.touched' required minlength='2'>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type='text' name='lastName' placeholder='Last Name' [(ngModel)]='messageInfo.lastName' #lname='ngModel' [class.hasError] = 'lname.isvalid && lname.touched' required minlength='2'>
+                <input matInput type='text' name='lastName' placeholder='Last Name' [(ngModel)]='messageInfo.lastName'
+                    #lname='ngModel' [class.hasError]='lname.isvalid && lname.touched' required minlength='2'>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type='text' name='address' placeholder='Address' [(ngModel)]='messageInfo.address' #address='ngModel' [class.hasError] = 'address.isvalid && address.touched' required minlength='10'>
+                <input matInput type='text' name='address' placeholder='Address' [(ngModel)]='messageInfo.address'
+                    #address='ngModel' [class.hasError]='address.isvalid && address.touched' required minlength='10'>
             </mat-form-field>
 
-            <button class='resi-submit-btn' mat-raised-button color='accent' (click)='onSubmit' [disabled]='resiForm.invalid'>Submit</button>
+            <button class='resi-submit-btn' mat-raised-button color='accent' (click)='onSubmit'
+                [disabled]='resiForm.invalid'>Submit</button>
         </form>
     </div>
 
